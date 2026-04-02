@@ -264,21 +264,27 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
 .stat span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
 .stat-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.3); margin: 0 24px; }
 
-/* Countries stat: 3+ Countries on one line, Clients below in gold */
-.stat--countries { gap: 0; align-items: center; }
+/* Countries stat: 3+ COUNTRIES centrado arriba en blanco, CLIENTS abajo en dorado */
+.stat--countries {
+  display: flex; flex-direction: column; align-items: center; flex: 1; gap: 0;
+}
 .stat-countries-top {
   display: flex; align-items: baseline; gap: 8px; white-space: nowrap;
 }
 .stat-countries-top strong {
-  font-family: var(--font-display); font-size: 32px; color: white; line-height: 1; letter-spacing: 1px;
+  font-family: var(--font-display); font-size: 32px;
+  color: white !important; line-height: 1; letter-spacing: 1px;
 }
 .stat-country-name {
-  font-size: 14px; font-weight: 700; color: white;
-  letter-spacing: 1.5px; text-transform: uppercase;
+  font-size: 14px; font-weight: 800;
+  color: white !important;          /* forzado blanco, no dorado */
+  letter-spacing: 2px; text-transform: uppercase;
 }
 .stat-clients {
-  display: block; font-size: 10px; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--gold); margin-top: 4px;
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold) !important;    /* dorado */
+  margin-top: 5px;
 }
 
 .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
@@ -556,12 +562,13 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
     0 6px 24px rgba(201,168,76,0.15);        /* glow dorado bajo la tarjeta */
 }
 
-/* Tarjeta #6: misma apariencia que las demás, sin dorado permanente */
+/* Tarjeta #6: idéntica a las demás en reposo */
 .benefit-card--highlight {
-  border-color: rgba(201,168,76,0.18);
-  background: #ffffff;
+  border-color: rgba(255,255,255,0.08);
+  background: transparent;
 }
 .benefit-card--highlight:hover {
+  background: rgba(0,0,0,0.15);
   border-color: rgba(201,168,76,0.55);
   box-shadow:
     0 12px 32px rgba(28,61,45,0.1),
