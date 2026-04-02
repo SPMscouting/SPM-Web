@@ -115,7 +115,9 @@ h4 {
 }
 .section-tagline {
   font-size: 18px; color: var(--brand);
-  margin-bottom: 52px; white-space: nowrap;
+  margin-bottom: 52px;
+  white-space: normal;        /* allows wrapping on mobile */
+  word-break: keep-all;       /* keeps words intact */
 }
 
 /* ---- Reveal ---- */
@@ -261,6 +263,15 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
 .stat strong { font-family: var(--font-display); font-size: 32px; color: white; line-height: 1; letter-spacing: 1px; }
 .stat span { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
 .stat-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.3); margin: 0 24px; }
+
+/* Countries stat: 3+ Countries on one line, Clients below in gold */
+.stat--countries { gap: 0; }
+.stat-countries-top {
+  display: flex; align-items: baseline; gap: 5px; white-space: nowrap;
+}
+.stat-countries-top strong { font-family: var(--font-display); font-size: 32px; color: white; line-height: 1; }
+.stat-country-name { font-size: 13px; font-weight: 700; color: white; letter-spacing: 1px; text-transform: uppercase; }
+.stat-clients { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
 
 .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
 .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: scrollPulse 2.2s ease-in-out infinite; }
@@ -710,20 +721,63 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
    RESPONSIVE — MOBILE ≤ 600px
    ============================================================ */
 @media (max-width: 600px) {
-  :root { --section-py: 56px; }
-  .h1-display { font-size: 64px; }
-  .h1-accent  { font-size: 48px; }
-  .stats-bar  { flex-direction: column; gap: 16px; padding: 20px 24px; max-width: 100%; }
+  :root { --section-py: 48px; }
+
+  /* Hero */
+  .hero-content { padding-top: 110px; padding-bottom: 60px; }
+  .h1-thin    { font-size: 13px; letter-spacing: 3px; }
+  .h1-display { font-size: 52px; }
+  .h1-accent  { font-size: 38px; }
+  .hero-sub   { font-size: 15px; }
+  .hero-ctas  { flex-direction: column; gap: 10px; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+
+  /* Stats bar */
+  .stats-bar  {
+    flex-direction: column; gap: 14px;
+    padding: 20px 24px; max-width: 100%;
+    align-items: flex-start;
+  }
   .stat-sep   { display: none; }
-  .about-img img { height: 280px; }
-  .about-badge   { bottom: -12px; left: 12px; }
-  .showcase-content { padding: 32px 22px; }
-  .showcase-content h3 { font-size: 40px; }
-  .benefits-grid-new { grid-template-columns: 1fr; gap: 12px; }
-  .benefit-card { border-right: none !important; border-bottom: none !important; }
+  .stat, .stat--countries { align-items: flex-start; }
+
+  /* About */
+  .about-grid { gap: 36px; }
+  .about-img img { height: 240px; }
+  .about-badge   { bottom: -12px; left: 12px; padding: 14px 18px; }
+  .badge-num { font-size: 26px; }
+
+  /* Challenge/Solution */
+  .cs-list li { padding: 14px 16px; }
+
+  /* Services tagline — never clip */
+  .section-tagline { font-size: 16px; white-space: normal; }
+
+  /* Services cards */
+  .showcase-content { padding: 28px 20px; }
+  .showcase-content h3 { font-size: 36px; }
+  .showcase-content p { font-size: 13px; }
+  .showcase-features li { font-size: 12px; }
+
+  /* Tech strip */
+  .tech-strip { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+  /* Benefits */
+  .benefits-grid-new { grid-template-columns: 1fr; gap: 10px; }
+  .benefit-card { padding: 28px 24px 32px; border-right: none !important; border-bottom: none !important; }
   .benefit-card:last-child { border-bottom: none !important; }
-  .benefits-cta-strip { flex-direction: column; align-items: flex-start; padding: 24px; }
+  .benefit-icon-lg { font-size: 24px; }
+
+  /* Contact */
   .form-row { grid-template-columns: 1fr; }
-  .contact-form-wrap { padding: 28px 20px; }
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+  .contact-form-wrap { padding: 24px 18px; }
+
+  /* Footer */
+  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .footer-logo-img { height: 36px; }
+
+  /* General */
+  h2 { font-size: clamp(26px, 7vw, 40px); }
+  .section-lead { font-size: 15px; }
+  .container { padding: 0 18px; }
 }
