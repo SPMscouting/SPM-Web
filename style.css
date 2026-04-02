@@ -265,13 +265,21 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
 .stat-sep { width: 1px; height: 36px; background: rgba(255,255,255,0.3); margin: 0 24px; }
 
 /* Countries stat: 3+ Countries on one line, Clients below in gold */
-.stat--countries { gap: 0; }
+.stat--countries { gap: 0; align-items: center; }
 .stat-countries-top {
-  display: flex; align-items: baseline; gap: 5px; white-space: nowrap;
+  display: flex; align-items: baseline; gap: 8px; white-space: nowrap;
 }
-.stat-countries-top strong { font-family: var(--font-display); font-size: 32px; color: white; line-height: 1; }
-.stat-country-name { font-size: 13px; font-weight: 700; color: white; letter-spacing: 1px; text-transform: uppercase; }
-.stat-clients { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-top: 4px; }
+.stat-countries-top strong {
+  font-family: var(--font-display); font-size: 32px; color: white; line-height: 1; letter-spacing: 1px;
+}
+.stat-country-name {
+  font-size: 14px; font-weight: 700; color: white;
+  letter-spacing: 1.5px; text-transform: uppercase;
+}
+.stat-clients {
+  display: block; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gold); margin-top: 4px;
+}
 
 .scroll-hint { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; }
 .scroll-line { width: 1px; height: 60px; background: linear-gradient(to bottom, transparent, var(--gold)); animation: scrollPulse 2.2s ease-in-out infinite; }
@@ -548,20 +556,17 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
     0 6px 24px rgba(201,168,76,0.15);        /* glow dorado bajo la tarjeta */
 }
 
-/* Tarjeta destacada (#6): siempre con toque dorado */
+/* Tarjeta #6: misma apariencia que las demás, sin dorado permanente */
 .benefit-card--highlight {
-  border-color: rgba(201,168,76,0.45);
-  background: linear-gradient(145deg, #ffffff 60%, rgba(245,232,192,0.25) 100%);
-  box-shadow:
-    0 4px 20px rgba(28,61,45,0.08),
-    0 0 0 1px rgba(201,168,76,0.2);
+  border-color: rgba(201,168,76,0.18);
+  background: #ffffff;
 }
 .benefit-card--highlight:hover {
-  border-color: var(--gold);
+  border-color: rgba(201,168,76,0.55);
   box-shadow:
-    0 14px 36px rgba(28,61,45,0.12),
-    0 0 0 3px rgba(201,168,76,0.2),
-    0 8px 28px rgba(201,168,76,0.22);
+    0 12px 32px rgba(28,61,45,0.1),
+    0 0 0 3px rgba(201,168,76,0.12),
+    0 6px 24px rgba(201,168,76,0.15);
 }
 
 /* Número: verde corporativo tenue */
@@ -578,7 +583,7 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
 .benefit-card h4 { color: #042008; font-size: 13px; margin-bottom: 8px; }
 .benefit-card p   { font-size: 13px; color: var(--text-body); line-height: 1.65; font-weight: 400; }
 
-/* Línea dorada en la base: aparece en hover */
+/* Línea dorada en la base: aparece en hover en todas las tarjetas */
 .benefit-line {
   position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
   background: linear-gradient(90deg, var(--brand) 0%, var(--gold) 100%);
@@ -587,13 +592,8 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 .benefit-card:hover .benefit-line { transform: scaleX(1); }
-
-/* En la tarjeta destacada la línea ya es visible */
-.benefit-card--highlight .benefit-line {
-  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
-  transform: scaleX(1); opacity: 0.7;
-}
-.benefit-card--highlight:hover .benefit-line { opacity: 1; }
+.benefit-card--highlight .benefit-line { transform: scaleX(0); }
+.benefit-card--highlight:hover .benefit-line { transform: scaleX(1); }
 
 /* CTA strip dentro de benefits */
 .benefits-cta-strip {
@@ -732,14 +732,22 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
   .hero-ctas  { flex-direction: column; gap: 10px; }
   .hero-ctas .btn { width: 100%; justify-content: center; }
 
-  /* Stats bar */
-  .stats-bar  {
-    flex-direction: column; gap: 14px;
-    padding: 20px 24px; max-width: 100%;
-    align-items: flex-start;
+  /* Stats bar — compact on mobile */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 0;
+    padding: 16px 20px;
+    max-width: 100%;
+    border-radius: var(--radius);
   }
-  .stat-sep   { display: none; }
-  .stat, .stat--countries { align-items: flex-start; }
+  .stat-sep { display: none; }
+  .stat, .stat--countries { align-items: center; }
+  .stat strong,
+  .stat-countries-top strong { font-size: 24px; }
+  .stat-country-name { font-size: 11px; }
+  .stat span,
+  .stat-clients { font-size: 9px; letter-spacing: 1px; }
 
   /* About */
   .about-grid { gap: 36px; }
