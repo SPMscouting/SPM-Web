@@ -281,9 +281,9 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
   letter-spacing: 2px; text-transform: uppercase;
 }
 .stat-clients {
-  display: block; font-size: 10px; font-weight: 700;
+  display: block; font-size: 10px; font-weight: 400;
   letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold) !important;    /* dorado */
+  color: var(--gold) !important;
   margin-top: 5px;
 }
 
@@ -564,11 +564,12 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
 
 /* Tarjeta #6: idéntica a las demás en reposo */
 .benefit-card--highlight {
-  border-color: rgba(255,255,255,0.08);
-  background: transparent;
+  border-color: rgba(201,168,76,0.18);
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(28,61,45,0.06);
 }
 .benefit-card--highlight:hover {
-  background: rgba(0,0,0,0.15);
+  transform: translateY(-5px);
   border-color: rgba(201,168,76,0.55);
   box-shadow:
     0 12px 32px rgba(28,61,45,0.1),
