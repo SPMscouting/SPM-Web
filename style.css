@@ -280,9 +280,15 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
   color: white !important;          /* forzado blanco, no dorado */
   letter-spacing: 2px; text-transform: uppercase;
 }
-.stat-clients {
-  display: block; font-size: 10px; font-weight: 400;
-  letter-spacing: 2px; text-transform: uppercase;
+.stat-clients,
+.stat--countries .stat-clients,
+.stats-bar .stat-clients {
+  display: block;
+  font-size: 10px;
+  font-weight: 400 !important;
+  font-style: normal;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   color: var(--gold) !important;
   margin-top: 5px;
 }
@@ -562,19 +568,19 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
     0 6px 24px rgba(201,168,76,0.15);        /* glow dorado bajo la tarjeta */
 }
 
-/* Tarjeta #6: idéntica a las demás en reposo */
+/* Tarjeta #6: idéntica a las demás — no añade nada extra */
 .benefit-card--highlight {
-  border-color: rgba(201,168,76,0.18);
-  background: #ffffff;
-  box-shadow: 0 2px 12px rgba(28,61,45,0.06);
+  background: #ffffff !important;
+  border-color: rgba(201,168,76,0.18) !important;
+  box-shadow: 0 2px 12px rgba(28,61,45,0.06), 0 0 0 0 rgba(201,168,76,0) !important;
 }
 .benefit-card--highlight:hover {
   transform: translateY(-5px);
-  border-color: rgba(201,168,76,0.55);
+  border-color: rgba(201,168,76,0.55) !important;
   box-shadow:
     0 12px 32px rgba(28,61,45,0.1),
     0 0 0 3px rgba(201,168,76,0.12),
-    0 6px 24px rgba(201,168,76,0.15);
+    0 6px 24px rgba(201,168,76,0.15) !important;
 }
 
 /* Número: verde corporativo tenue */
