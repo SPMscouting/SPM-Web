@@ -761,7 +761,7 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
   .stat-countries-top strong { font-size: 24px; }
   .stat-country-name { font-size: 11px; }
   .stat span,
-  .stat-clients { font-size: 9px; letter-spacing: 1px; }
+  .stat-clients { font-size: 9px !important; letter-spacing: 1px; }
 
   /* About */
   .about-grid { gap: 36px; }
