@@ -699,14 +699,27 @@ h1 { display: flex; flex-direction: column; gap: 2px; margin-bottom: 28px; }
   :root { --section-py: 72px; }
 
   .nav-links {
-    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: white; flex-direction: column; align-items: center;
-    justify-content: center; gap: 32px; z-index: 999;
+    display: none;
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: white;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 28px; z-index: 1000;  /* same level as header so it covers it */
+    padding: 20px;
+    overflow-y: auto;
   }
   .nav-links.open { display: flex; }
-  .nav-links a { font-size: 20px; letter-spacing: 3px; color: #042008; }
-  .nav-links a.nav-cta { background: var(--brand); color: white; padding: 14px 30px; }
-  .hamburger { display: flex; }
+  .nav-links a {
+    font-size: 20px; letter-spacing: 3px; color: #042008;
+    width: 100%; text-align: center; padding: 8px 0;
+    border-bottom: 1px solid rgba(4,32,8,0.06);
+  }
+  .nav-links li:last-child a { border-bottom: none; }
+  .nav-links a.nav-cta {
+    background: var(--brand); color: white;
+    padding: 14px 30px; border-radius: var(--radius);
+    border-bottom: none; margin-top: 8px;
+  }
+  .hamburger { display: flex; z-index: 1001; position: relative; }
 
   .about-grid { grid-template-columns: 1fr; gap: 48px; }
   .about-img img { height: 360px; }
